@@ -1,20 +1,41 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-import "../Header/style.css";
+import { Modal } from "react-bootstrap";
+import Login from "../../Pages/Login";
+import Signup from "../../Pages/Signup";
 
 export default function BasicMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleShowLogin = () => {
+    setShowLogin(true);
+    handleClose();
+  };
+
+  const handleShowSignup = () => {
+    setShowSignup(true);
+    handleClose();
+  };
+
+  const handleCloseLogin = () => setShowLogin(false);
+
+  const handleCloseSignup = () => setShowSignup(false);
 
   return (
     <div>
@@ -37,29 +58,27 @@ export default function BasicMenu() {
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
-        sx={{
-          ".MuiPaper-root": {
-
-            minWidth:"200px",
-            borderRadius: "1rem",
-            padding: "0.5rem",
-            boxShadow:
-              "0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05)",
-          },
-        }}
       >
-        <MenuItem className="menu-items" onClick={handleClose}>Signup</MenuItem>
-        <MenuItem className="menu-items" onClick={handleClose}>Login</MenuItem>
+        <MenuItem onClick={handleShowSignup}>Signup</MenuItem>
+        <MenuItem onClick={handleShowLogin}>Login</MenuItem>
         <div
           style={{
             height: "1px",
             backgroundColor: "var(--grey)",
             width: "100%",
           }}
-        ></div>
-        <MenuItem  className="menu-items" onClick={handleClose}>Airbnb Your Home</MenuItem>
-        <MenuItem className="menu-items"  onClick={handleClose}>Help</MenuItem>
+        />
+        <MenuItem>Airbnb Your Home</MenuItem>
+        <MenuItem>Help</MenuItem>
       </Menu>
+
+      
+      <Modal show={showLogin} onHide={handleCloseLogin}>
+        <Login onClose={handleCloseLogin} />
+      </Modal>
+      <Modal show={showSignup} onHide={handleCloseSignup}>
+        <Signup onClose={handleCloseSignup} />
+      </Modal>
     </div>
   );
 }

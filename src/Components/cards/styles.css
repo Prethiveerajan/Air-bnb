@@ -1,61 +1,64 @@
-.cards-flex {
+/* Updated class names to avoid conflicts */
+
+.cards-flex-custom {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 1rem 3rem;
 }
-.card-box {
+
+.card-box-custom {
   margin: 1rem;
   margin-bottom: 2rem;
 }
 
-.swiper-container {
+.swiper-container-custom {
   height: 270px;
   width: 270px;
   overflow: hidden;
 }
 
-.card-img {
+.card-img-custom {
   height: 270px;
   width: 270px;
   object-fit: cover;
   border-radius: 0.5rem;
 }
 
-.card-info-flex {
+.card-info-flex-custom {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.card-rating {
+.card-rating-custom {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
-.card-box .swiper-pagination-bullet-active {
+.card-box-custom .swiper-pagination-bullet-active {
   background-color: var(--white) !important;
 }
 
 @media only screen and (max-width: 1000px) {
-  .swiper-container,
-  .card-img {
+  .swiper-container-custom,
+  .card-img-custom {
     height: 400px;
     width: 40vw;
   }
 }
 
 @media only screen and (max-width: 800px) {
-  .swiper-container,
-  .card-img {
+  .swiper-container-custom,
+  .card-img-custom {
     height: 50%;
     max-height: 400px;
     width: 90vw;
   }
 
-  .cards-flex {
+  .cards-flex-custom {
     padding: 0px;
   }
 }

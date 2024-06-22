@@ -1,0 +1,93 @@
+
+.modal-content-custom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    width: 650px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    position: relative; 
+  }
+  
+  .modal-header-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 0 20px;/
+  }
+  
+  .form-container-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:10%;
+    width: 100%;
+    
+  }
+  
+  .form-wrapper-custom {
+    width: 100%;
+  }
+  
+  .form-wrapper-custom h3 {
+    text-align: center;
+    color: #0c0c0c;
+  }
+  
+  .form-wrapper-custom form {
+    background-color: #eceaea;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-wrapper-custom label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-wrapper-custom input[type="text"],
+  .form-wrapper-custom input[type="email"],
+  .form-wrapper-custom input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #121212;
+    border-radius: 4px;
+  }
+  
+  .form-wrapper-custom .d-grid-custom {
+    margin-top: 10px;
+  }
+  
+  .form-wrapper-custom .forget-password-custom {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #080808;
+    text-align: center;
+  }
+  
+  .form-wrapper-custom .forget-password-custom a {
+    color: #020202;
+  }
+  
+  .form-wrapper-custom .forget-password-custom a:hover {
+    text-decoration: underline;
+    color: #007bff;
+  }
+  
+  
+  .form-wrapper-custom .d-grid-custom {
+    display: flex;
+    justify-content: center; 
+    margin-top: 10px;
+  }

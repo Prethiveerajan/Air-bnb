@@ -9,7 +9,7 @@ import { Pagination, Navigation } from "swiper/modules"; // Adjusted import path
 
 function Card({ card }) {
   return (
-    <div className="card-box">
+    <div className="card-box-custom">
       <Swiper
         slidesPerView={1}
         spaceBetween={15}
@@ -17,19 +17,18 @@ function Card({ card }) {
         mousewheel={true}
         cssMode={true}
         pagination={{ clickable: true }}
-        
         modules={[Pagination, Navigation]} // Ensure the modules are correctly referenced
-        className="swiper-container"
+        className="swiper-container-custom"
       >
         {card.imgSrc.map((src, i) => (
           <SwiperSlide key={i}>
-            <img src={src} className="card-img" alt={`Slide ${i}`} />
+            <img src={src} className="card-img-custom" alt={`Slide ${i}`} />
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="card-info-flex">
+      <div className="card-info-flex-custom">
         <h3 className="card-title">{card.title}</h3>
-        <div className="card-rating">
+        <div className="card-rating-custom">
           <StarRateRoundedIcon />
           <p>{card.rating}</p>
         </div>
