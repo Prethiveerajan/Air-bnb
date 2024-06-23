@@ -4,14 +4,14 @@ import LanguageIcon from "@mui/icons-material/Language";
 import BasicMenu from "../ProfileMenu/BasicMenu";
 import SimpleBottomNavigation from "./BottomNav";
 import MobileSearchBar from "../MobileSearchBar/Search";
-import SearchBar from "./SearchBar";  
+  
 import Logo from "./Logo"; 
 
 function Header() {
   return (
     <div className="navbar">
       <Logo /> 
-      <SearchBar /> 
+      
       <div className="profile-container">
         <div className="airbnb-your-home">Airbnb your home</div>
         <div className="airbnb-your-home">

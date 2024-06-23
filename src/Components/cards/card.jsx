@@ -27,15 +27,17 @@ function Card({ card }) {
         ))}
       </Swiper>
       <div className="card-info-flex-custom">
-        <h3 className="card-title">{card.title}</h3>
+        <div>
+          <h3 className="card-title">{card.title}</h3>
+          <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.desc}</p>
+          <p style={{ margin: 0, color: "var(--font-grey)" }}>Location: {card.location}</p>
+        </div>
         <div className="card-rating-custom">
-          <StarRateRoundedIcon />
-          <p>{card.rating}</p>
+          <StarRateRoundedIcon style={{ fontSize: "1.2rem" }} />
+          <p style={{ margin: 0, paddingLeft: "0.25rem" }}>{card.rating}</p>
         </div>
       </div>
-      {/* <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.desc}</p> */}
-      <p style={{ margin: 0, color: "var(--font-grey)" }}>{card.date}</p>
-      <p style={{ margin: "0.2rem", fontSize: "1rem", color: "var(--black" }}>
+      <p style={{ margin: "0.2rem", fontSize: "1rem", color: "var(--black)" }}>
         <span style={{ fontWeight: "600" }}>₹{card.price}</span> night
       </p>
     </div>
