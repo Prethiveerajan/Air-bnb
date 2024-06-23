@@ -1,11 +1,11 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import Logo from "../Components/Header/Logo";
 import BasicMenu from "../Components/ProfileMenu/BasicMenu";
-import './Styles.css';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './SignupStyles.css';  // Separate CSS file for Signup
 
 function Signup({ onClose }) {
   const [firstName, setFirstName] = useState("");
@@ -21,17 +21,18 @@ function Signup({ onClose }) {
     const newUser = { firstName, lastName, email, password, isAdmin };
     signup(newUser);
     onClose();
+    // toast.success('Signup successful!');
     navigate('/');
   };
 
   return (
-    <div className="modal-content-custom">
-      <div className="modal-header-custom">
+    <div className="signup-modal-content-custom">
+      <div className="signup-modal-header-custom">
         <Logo className="Logo" />
         <BasicMenu className="Menu" />
       </div>
-      <div className="form-container-custom">
-        <div className="form-wrapper-custom">
+      <div className="signup-form-container-custom">
+        <div className="signup-form-wrapper-custom">
           <form onSubmit={formSubmitHandler}>
             <h3>Sign up</h3>
             <div className="mb-3">
@@ -84,15 +85,16 @@ function Signup({ onClose }) {
                 <input type="checkbox" name="isAdmin" />
               </label>
             </div>
-            <div className="d-grid-custom">
+            <div className="signup-d-grid-custom">
               <button type="submit" className="btn btn-danger">Sign Up</button>
             </div>
-            <p className="forget-password-custom text-right">
+            <p className="signup-forget-password-custom text-right">
               Already registered? <a href="#" onClick={onClose}>Sign-in here?</a>
             </p>
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

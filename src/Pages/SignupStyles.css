@@ -1,5 +1,4 @@
-
-.modal-content-custom {
+.signup-modal-content-custom {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +13,7 @@
   position: relative; 
 }
 
-.modal-header-custom {
+.signup-modal-header-custom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,42 +21,41 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  padding: 0 20px;/
+  padding: 0 20px;
 }
 
-.form-container-custom {
+.signup-form-container-custom {
   display: flex;
   justify-content: center;
   align-items: center;
-  top:10%;
-  width: 100%;
-  
-}
-
-.form-wrapper-custom {
+  top: 10%;
   width: 100%;
 }
 
-.form-wrapper-custom h3 {
+.signup-form-wrapper-custom {
+  width: 100%;
+}
+
+.signup-form-wrapper-custom h3 {
   text-align: center;
   color: #0c0c0c;
 }
 
-.form-wrapper-custom form {
+.signup-form-wrapper-custom form {
   background-color: #eceaea;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.form-wrapper-custom label {
+.signup-form-wrapper-custom label {
   display: block;
   margin-bottom: 5px;
 }
 
-.form-wrapper-custom input[type="text"],
-.form-wrapper-custom input[type="email"],
-.form-wrapper-custom input[type="password"] {
+.signup-form-wrapper-custom input[type="text"],
+.signup-form-wrapper-custom input[type="email"],
+.signup-form-wrapper-custom input[type="password"] {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
@@ -65,28 +63,27 @@
   border-radius: 4px;
 }
 
-.form-wrapper-custom .d-grid-custom {
+.signup-form-wrapper-custom .signup-d-grid-custom {
   margin-top: 10px;
 }
 
-.form-wrapper-custom .forget-password-custom {
+.signup-form-wrapper-custom .signup-forget-password-custom {
   margin-top: 10px;
   font-size: 14px;
   color: #080808;
   text-align: center;
 }
 
-.form-wrapper-custom .forget-password-custom a {
+.signup-form-wrapper-custom .signup-forget-password-custom a {
   color: #020202;
 }
 
-.form-wrapper-custom .forget-password-custom a:hover {
+.signup-form-wrapper-custom .signup-forget-password-custom a:hover {
   text-decoration: underline;
   color: #007bff;
 }
 
-
-.form-wrapper-custom .d-grid-custom {
+.signup-form-wrapper-custom .signup-d-grid-custom {
   display: flex;
   justify-content: center; 
   margin-top: 10px;

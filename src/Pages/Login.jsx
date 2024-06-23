@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import Logo from "../Components/Header/Logo";
 import BasicMenu from "../Components/ProfileMenu/BasicMenu";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './Styles.css';
+import './LoginStyles.css'; 
 
 function Login({ onClose }) {
   const [email, setEmail] = useState("");
@@ -13,25 +13,46 @@ function Login({ onClose }) {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const formSubmitHandler = (event) => {
+  const formSubmitHandler = async (event) => {
     event.preventDefault();
-    if (login(email, password)) {
-      toast.success('Login successful!');
-      onClose(); 
-      navigate('/'); 
-    } else {
-      toast.error('Invalid email or password');
+    try {
+      const isAuthenticated = await login(email, password);
+      if (isAuthenticated) {
+        onClose();
+        toast.success('Login successful!', {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeButton: true
+        });
+        navigate('/');
+      } else {
+        toast.error('Invalid email or password', {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeButton: true
+        });
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error('An error occurred. Please try again later.', {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeButton: true
+      });
     }
   };
 
   return (
-    <div className="modal-content-custom">
-      <div className="modal-header-custom">
+    <div className="login-modal-content-custom">
+      <div className="login-modal-header-custom">
         <Logo className="Logo" />
         <BasicMenu className="Menu" />
       </div>
-      <div className="form-container-custom">
-        <div className="form-wrapper-custom">
+      <div className="login-form-container-custom">
+        <div className="login-form-wrapper-custom">
           <form onSubmit={formSubmitHandler}>
             <h3>Login</h3>
             <div className="mb-3">
@@ -56,14 +77,13 @@ function Login({ onClose }) {
                 required
               />
             </div>
-            <div className="d-grid-custom">
+            <div className="login-d-grid-custom">
               <button type="submit" className="btn btn-danger">Login</button>
             </div>
-            <p className="forget-password-custom text-right">
+            <p className="login-forget-password-custom text-right">
               Don't have an account? <a href="#" onClick={onClose}>Register here?</a>
             </p>
           </form>
-          <ToastContainer />
         </div>
       </div>
     </div>
