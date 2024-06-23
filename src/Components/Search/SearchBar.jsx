@@ -1,58 +1,16 @@
 
 // import React, { useState } from "react";
 // import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-
-
-// function SearchBar({ onSearch }) {
-//   const [searchQuery, setSearchQuery] = useState("");
-
-//   const handleSearch = () => {
-//     onSearch(searchQuery.trim()); 
-//   };
-
-//   const handleChange = (e) => {
-//     setSearchQuery(e.target.value);
-//   };
-
-//   const handleKeyPress = (e) => {
-//     if (e.key === 'Enter') {
-//       handleSearch();
-//     }
-//   };
-
-//   return (
-//     <div className="search-bar-container">
-//       <div className="search-bar">
-//         <input
-//           type="text"
-//           placeholder="Anywhere"
-//           className="search-bar-input"
-//           value={searchQuery}
-//           onChange={handleChange}
-//           onKeyPress={handleKeyPress}
-//         />
-//         <div className="search-bar-text">Any Week</div>
-//         <div className="search-bar-text">Add guests</div>
-//         <div className="search-icon-div" onClick={handleSearch}>
-//           <SearchRoundedIcon className="search-icon" />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default SearchBar;
-
-// import React, { useState } from "react";
-// import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-
+// import CalendarModal from "./CalendarModal";
+// import GuestModal from "./GuestModal";
+// import "./Search.css";
 
 // function SearchBar({ onSearch }) {
 //   const [searchQuery, setSearchQuery] = useState("");
 //   const [startDate, setStartDate] = useState(null);
 //   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+//   const [isGuestModalOpen, setIsGuestModalOpen] = useState(false);
+//   const [selectedGuests, setSelectedGuests] = useState(null);
 
 //   const handleSearch = () => {
 //     onSearch(searchQuery.trim());
@@ -69,12 +27,25 @@
 //   };
 
 //   const handleDateClick = () => {
-//     setIsDatePickerOpen(!isDatePickerOpen);
+//     setIsDatePickerOpen(true);
 //   };
 
 //   const handleDateChange = (date) => {
 //     setStartDate(date);
-//     setIsDatePickerOpen(false); 
+//     setIsDatePickerOpen(false); // Close the calendar modal after selecting a date
+//   };
+
+//   const handleGuestModalOpen = () => {
+//     setIsGuestModalOpen(true);
+//   };
+
+//   const handleGuestModalClose = () => {
+//     setIsGuestModalOpen(false);
+//   };
+
+//   const handleSelectGuest = (guestOption) => {
+//     setSelectedGuests(guestOption);
+//     setIsGuestModalOpen(false); // Close the guest modal after selecting an option
 //   };
 
 //   return (
@@ -91,18 +62,24 @@
 //         <div className="search-bar-text" onClick={handleDateClick}>
 //           {startDate ? startDate.toDateString() : "Any Week"}
 //         </div>
-//         <div className="search-bar-text">Add guests</div>
+//         <div className="search-bar-text" onClick={handleGuestModalOpen}>
+//           {selectedGuests || "Add guests"}
+//         </div>
 //         <div className="search-icon-div" onClick={handleSearch}>
 //           <SearchRoundedIcon className="search-icon" />
 //         </div>
 //       </div>
-//       {isDatePickerOpen && (
-//         <DatePicker
-//           selected={startDate}
-//           onChange={handleDateChange}
-//           inline
-//         />
-//       )}
+//       <CalendarModal
+//         isOpen={isDatePickerOpen}
+//         onClose={() => setIsDatePickerOpen(false)}
+//         onDateChange={handleDateChange}
+//         startDate={startDate}
+//       />
+//       <GuestModal
+//         isOpen={isGuestModalOpen}
+//         onClose={handleGuestModalClose}
+//         onSelectGuest={handleSelectGuest}
+//       />
 //     </div>
 //   );
 // }
@@ -111,12 +88,20 @@
 import React, { useState } from "react";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CalendarModal from "./CalendarModal";
+import GuestModal from "./GuestModal";
 import "./Search.css";
 
-function SearchBar({ onSearch }) {
+const SearchBar = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const [isGuestModalOpen, setIsGuestModalOpen] = useState(false);
+  const [guests, setGuests] = useState({
+    adults: 0,
+    children: 0,
+    infants: 0,
+    pets: 0,
+  });
 
   const handleSearch = () => {
     onSearch(searchQuery.trim());
@@ -138,11 +123,22 @@ function SearchBar({ onSearch }) {
 
   const handleDateChange = (date) => {
     setStartDate(date);
-    setIsDatePickerOpen(false); // Close the modal after selecting a date
+    setIsDatePickerOpen(false); // Close the calendar modal after selecting a date
   };
 
-  const closeModal = () => {
-    setIsDatePickerOpen(false);
+  const handleGuestModalOpen = () => {
+    setIsGuestModalOpen(true);
+  };
+
+  const handleGuestModalClose = () => {
+    setIsGuestModalOpen(false);
+  };
+
+  const handleSelectGuest = (guestType, change) => {
+    setGuests({
+      ...guests,
+      [guestType]: guests[guestType] + change,
+    });
   };
 
   return (
@@ -159,19 +155,29 @@ function SearchBar({ onSearch }) {
         <div className="search-bar-text" onClick={handleDateClick}>
           {startDate ? startDate.toDateString() : "Any Week"}
         </div>
-        <div className="search-bar-text">Add guests</div>
+        <div className="search-bar-text" onClick={handleGuestModalOpen}>
+          {guests.adults + guests.children + guests.infants + guests.pets > 0
+            ? `${guests.adults + guests.children + guests.infants + guests.pets} guests`
+            : "Add guests"}
+        </div>
         <div className="search-icon-div" onClick={handleSearch}>
           <SearchRoundedIcon className="search-icon" />
         </div>
       </div>
       <CalendarModal
         isOpen={isDatePickerOpen}
-        onClose={closeModal}
+        onClose={() => setIsDatePickerOpen(false)}
         onDateChange={handleDateChange}
         startDate={startDate}
       />
+      <GuestModal
+        isOpen={isGuestModalOpen}
+        onClose={handleGuestModalClose}
+        onSelectGuest={handleSelectGuest}
+        guests={guests} 
+      />
     </div>
   );
-}
+};
 
 export default SearchBar;
