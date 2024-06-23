@@ -1,84 +1,88 @@
 .guest-modal-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 50vh;
-    width: 450px;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1001;
-  }
-  
-  .guest-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-  }
-  
-  .guest-modal-header {
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center;
-    width: 100%;
-    padding: 0 10px;
-  }
-  
-  .guest-modal-close-button {
-    cursor: pointer;
-    font-size: 24px;
-    margin-left: auto; /* Automatically push the button to the right */
-    margin-right: 5px; /* Maintain 5px gap from the right edge */
-  }
-  
-  .guest-options {
-    display: flex;
-    flex-direction: column; /* Display options in a column */
-    align-items: center; /* Center items horizontally */
-    gap: 20px; /* Vertical gap between options */
-    margin-top: 20px;
-  }
-  
-  .guest-option {
-    background-color: rgb(247, 246, 246); /* Background color for each option */
-    width: 100%; /* Take full width */
-    padding: 10px; /* Padding around each option */
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Space evenly between label, controls */
-    border: 1px solid black; /* Black border around each option */
-  }
-  
-  .option-label {
-    flex-grow: 1; /* Allow label to grow */
-    text-align: left; /* Align label text to left */
-    padding-left: 20px; /* Add left padding */
-  }
-  
-  .option-controls {
-    display: flex;
-    align-items: center; 
-  }
-  
-  .decrement-button,
-  .increment-button {
-    background-color: #f0f0f0; 
-    /* border: 1px solid #ccc;  */
-    padding: 10px; 
-    cursor: pointer; 
-    margin: 0 8px; 
-  }
-  
-  .guest-count {
-    font-size: 16px; /* Font size of guest count */
-    font-weight: bold; /* Bold font weight */
-    padding: 0 12px; /* Padding around guest count */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 45vh;
+  width: 450px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Change to absolute to position relative to the overlay */
+  top: 190px; /* Position 40px from the top */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+}
+
+.guest-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start; /* Align items to the start (top) */
+  justify-content: center;
+}
+
+.guest-modal-header {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.guest-modal-close-button {
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: auto; /* Automatically push the button to the right */
+  margin-right: 5px; /* Maintain 5px gap from the right edge */
+}
+
+.guest-options {
+  display: flex;
+  flex-direction: column; /* Display options in a column */
+  align-items: center; /* Center items horizontally */
+  gap: 20px; /* Vertical gap between options */
+  margin-top: 20px;
+}
+
+.guest-option {
+  background-color: rgb(247, 246, 246); /* Background color for each option */
+  width: 100%; /* Take full width */
+  padding: 10px; /* Padding around each option */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space evenly between label, controls */
+  border: 1px solid black; /* Black border around each option */
+}
+
+.option-label {
+  flex-grow: 1; /* Allow label to grow */
+  text-align: left; /* Align label text to left */
+  padding-left: 20px; /* Add left padding */
+}
+
+.option-controls {
+  display: flex;
+  align-items: center;
+}
+
+.decrement-button,
+.increment-button {
+  background-color: #f0f0f0;
+  padding: 10px;
+  cursor: pointer;
+  margin: 0 8px;
+}
+
+.guest-count {
+  font-size: 16px; /* Font size of guest count */
+  font-weight: bold; /* Bold font weight */
+  padding: 0 12px; /* Padding around guest count */
+}

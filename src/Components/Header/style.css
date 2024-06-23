@@ -5,6 +5,7 @@
   justify-content: space-between;
   margin-left: 50px;
   margin-top: 25px;
+  position: relative; 
 } 
 
 .navbar-logo {
@@ -14,8 +15,29 @@
 .navbar-items {
   display: flex;
   align-items: center;
-  gap: 30px;
-  justify-content: center;
+  gap: 2rem; 
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px; 
+}
+
+.nav-item {
+  font-size: 1rem;
+  font-weight: 700; 
+  color: var(--font-grey);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  background-color: var(--light-grey);
+  color: var(--black);
+}
+
+.nav-item:hover {
+  background-color: var(--light-grey);
 }
 
 @media only screen and (max-width: 800px) {
@@ -30,10 +52,11 @@
   }
 
   .navbar-items {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    width: 100%; 
+    display: none; 
+  }
+
+  .profile-container {
+    margin-top: 1rem;
   }
 }
 
@@ -84,17 +107,17 @@
   justify-content: center;
   align-items: center;
   background-color: var(--theme);
-
   padding: 0.40rem;
   border-radius: 50%;
   color: var(--white);
-  flex:none;
+  flex: none;
 }
 
 .search-icon{
   font-size: 1.5rem;
-  color:var(--white);
+  color: var(--white);
 }
+
 .profile-container {
   display: flex;
   justify-content: flex-end;
@@ -164,3 +187,4 @@
     box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
   }
 }
+

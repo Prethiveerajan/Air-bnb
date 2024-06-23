@@ -3,7 +3,6 @@ import { list, list2 } from "../assets/cards-list";
 import Cards from "../Components/cards/swipe";
 import Filter from "../Components/Filter/Filter";
 import Header from "../Components/Header/Header";
-import SearchBar from "../Components/Search/SearchBar";
 
 function Home({ onLoginClick, onSignupClick }) {
   const [selectedFilter, setSelectedFilter] = useState(0);
@@ -13,13 +12,13 @@ function Home({ onLoginClick, onSignupClick }) {
     setSearchQuery(query);
   };
 
-  const filteredList = selectedFilter === 0 ? list.filter(card => card.location.toLowerCase().includes(searchQuery.toLowerCase())) : list2.filter(card => card.location.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredList = selectedFilter === 0 
+    ? list.filter(card => card.location.toLowerCase().includes(searchQuery.toLowerCase())) 
+    : list2.filter(card => card.location.toLowerCase().includes(searchQuery.toLowerCase()));
 
   return (
     <div className="Home">
-      <Header />
-      
-      <SearchBar onSearch={handleSearch} />
+      <Header onSearch={handleSearch} /> 
       <Filter
         selectedFilter={selectedFilter}
         setSelectedFilter={setSelectedFilter}
@@ -34,7 +33,3 @@ function Home({ onLoginClick, onSignupClick }) {
 }
 
 export default Home;
-
-
-
-

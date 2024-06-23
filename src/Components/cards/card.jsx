@@ -1,31 +1,29 @@
 import React from "react";
-import "./styles.css";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules"; // Adjusted import path
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "./styles.css";
 
-function Card({ card }) {
+const Card = ({ card }) => {
   return (
     <div className="card-box-custom">
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={15}
-        loop={true}
-        mousewheel={true}
-        cssMode={true}
-        pagination={{ clickable: true }}
-        modules={[Pagination, Navigation]} // Ensure the modules are correctly referenced
-        className="swiper-container-custom"
-      >
-        {card.imgSrc.map((src, i) => (
-          <SwiperSlide key={i}>
-            <img src={src} className="card-img-custom" alt={`Slide ${i}`} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="carousel-custom">
+        <Carousel
+          showArrows={true} // Show arrow navigation
+          showThumbs={false} // Hide thumbnail navigation
+          showStatus={false} // Hide status indicator
+          infiniteLoop={true} // Enable infinite loop
+          autoPlay={true} // Auto play slides
+          interval={5000} // Interval between slides in milliseconds
+          className="carousel-inner-custom"
+        >
+          {card.imgSrc.map((src, index) => (
+            <div key={index} className="carousel-image-container">
+              <img src={src} className="card-img-custom" alt={`Slide ${index}`} />
+            </div>
+          ))}
+        </Carousel>
+      </div>
       <div className="card-info-flex-custom">
         <div>
           <h3 className="card-title">{card.title}</h3>
@@ -42,6 +40,6 @@ function Card({ card }) {
       </p>
     </div>
   );
-}
+};
 
 export default Card;

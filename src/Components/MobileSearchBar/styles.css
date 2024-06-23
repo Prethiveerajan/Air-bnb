@@ -1,5 +1,5 @@
 .mobile-search-bar {
-  display: none; /* Initially hide the search bar */
+  display: none; 
 }
 
 @media only screen and (max-width: 800px) {
@@ -21,7 +21,7 @@
   }
 
   .mobile-search-input {
-    flex: 1; /* Take remaining space */
+    flex: 1; 
     border: none;
     outline: none;
     padding: 0.5rem;
@@ -38,3 +38,5 @@
     color: var(--white);
   }
 }
+
+

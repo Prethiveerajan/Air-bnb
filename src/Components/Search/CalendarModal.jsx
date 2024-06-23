@@ -5,9 +5,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import CancelSharpIcon from '@mui/icons-material/CancelSharp';
 import "./Search.css";
 
-ReactModal.setAppElement("#root"); // Adjust according to your app's root element
+ReactModal.setAppElement("#root"); 
 
 const CalendarModal = ({ isOpen, onClose, onDateChange, startDate }) => {
+  const today = new Date(); 
+
+ 
+  const maxDate = new Date();
+  maxDate.setDate(today.getDate() + 10);
+
   return (
     <ReactModal
       isOpen={isOpen}
@@ -25,6 +31,8 @@ const CalendarModal = ({ isOpen, onClose, onDateChange, startDate }) => {
           selected={startDate}
           onChange={onDateChange}
           inline
+          minDate={today} 
+          maxDate={maxDate} 
         />
       </div>
     </ReactModal>
