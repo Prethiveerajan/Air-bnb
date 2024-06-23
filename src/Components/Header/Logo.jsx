@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 import logo from "../../assets/logo/long-logo.png";
-import './style.css';
+import "./style.css"; 
 
-function Logo() {
-  return (
-    <img src={logo} alt="logo" className='navbar-logo' />
-  );
-}
+const Logo = () => {
+  return <img src={logo} alt="logo" className="navbar-logo" />;
+};
 
-export default Logo;    
+export default Logo;
