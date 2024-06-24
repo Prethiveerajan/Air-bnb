@@ -53,7 +53,7 @@ export default function BasicMenu() {
   const notify = (message) => {
     toast.success(message, {
       position: "top-left",
-      autoClose: 2000,
+      autoClose: 0.2,
       hideProgressBar: true,
       closeButton: true
     });
