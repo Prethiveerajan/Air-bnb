@@ -1,37 +1,3 @@
-
-// import React from "react";
-// import { links } from "../../assets/images-links"; 
-// import "./Style.css";
-
-// function FilterEx({ selectedFilter, setSelectedFilter, setImageSrc }) {
-//   const handleClick = (i) => {
-//     setSelectedFilter(i);
-//     setImageSrc(links[i].imgSrc); // Set image source based on selected filter
-//   };
-
-//   return (
-//     <div className="filter-div">
-//       {links.map((item, i) => (
-//         <div
-//           key={i}
-//           className={`links-box ${i === selectedFilter ? "selected-box" : ""}`}
-//           onClick={() => handleClick(i)}
-//         >
-//           <img src={item.imgSrc} className="links-img" alt={`Image ${i}`} /> {/* Ensure alt text */}
-//           <p className={`links-label ${i === selectedFilter ? "selected-label" : ""}`}>
-//             {item.label}
-//           </p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// export default FilterEx;
-
-
-
-
 import React, { useState } from "react";
 import { links } from "../../assets/images-links"; 
 import "./Style.css";
@@ -40,11 +6,11 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 
 function FilterEx({ selectedFilter, setSelectedFilter, setImageSrc }) {
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsPerPage = 10; // Number of items to show per page
+  const itemsPerPage = 10; 
 
   const handleClick = (i) => {
     setSelectedFilter(i);
-    setImageSrc(links[i].imgSrc); // Set image source based on selected filter
+    setImageSrc(links[i].imgSrc); 
   };
 
   const totalPages = Math.ceil(links.length / itemsPerPage);
