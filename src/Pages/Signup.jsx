@@ -79,12 +79,7 @@ function Signup({ onClose }) {
                 required
               />
             </div>
-            <div className="mb-3">
-              <label>
-                Admin:
-                <input type="checkbox" name="isAdmin" />
-              </label>
-            </div>
+            
             <div className="signup-d-grid-custom">
               <button type="submit" className="btn btn-danger">Sign Up</button>
             </div>

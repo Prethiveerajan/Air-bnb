@@ -9,12 +9,12 @@ const Card = ({ card }) => {
     <div className="card-box-custom">
       <div className="carousel-custom">
         <Carousel
-          showArrows={true} // Show arrow navigation
-          showThumbs={false} // Hide thumbnail navigation
-          showStatus={false} // Hide status indicator
-          infiniteLoop={true} // Enable infinite loop
-          autoPlay={true} // Auto play slides
-          interval={5000} // Interval between slides in milliseconds
+          showArrows={true}
+          showThumbs={false}
+          showStatus={false}
+          infiniteLoop={true}
+          autoPlay={true}
+          interval={5000}
           className="carousel-inner-custom"
         >
           {card.imgSrc.map((src, index) => (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { list, list2 } from "../assets/cards-list";
+import { list, list2} from "../assets/cards-list";
 import Cards from "../Components/cards/swipe";
 import Filter from "../Components/Filter/Filter";
 import Header from "../Components/Header/Header";
@@ -33,3 +33,5 @@ function Home({ onLoginClick, onSignupClick }) {
 }
 
 export default Home;
+
+
