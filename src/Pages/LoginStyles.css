@@ -3,9 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 85vh;
+    height: 55vh;
     width: 650px;
     background-color: #fff;
+    /* background-color: transparent; */
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -22,6 +23,7 @@
     top: 10px;
     left: 10px;
     padding: 0 20px;
+    
   }
   
   .login-form-container-custom {
@@ -42,7 +44,8 @@
   }
   
   .login-form-wrapper-custom form {
-    background-color: #eceaea;
+    /* background-color: #eceaea; */
+    background-color: transparent;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
