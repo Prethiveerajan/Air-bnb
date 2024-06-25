@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CalendarModal from "./CalendarModal";
 import GuestModal from "./GuestModal";
@@ -16,6 +15,23 @@ const SearchBar = ({ onSearch }) => {
     infants: 0,
     pets: 0,
   });
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsExpanded(true);
+      } else {
+        setIsExpanded(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleSearch = () => {
     onSearch(searchQuery.trim());
@@ -57,7 +73,7 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <div className="search-bar-container">
-      <div className="search-bar">
+      <div className={`search-bar ${isExpanded ? "expanded" : ""}`}>
         <input
           type="text"
           placeholder="Anywhere"
@@ -67,7 +83,10 @@ const SearchBar = ({ onSearch }) => {
           onKeyPress={handleKeyPress}
         />
         <div className="search-bar-text" onClick={handleDateClick}>
-          {startDate ? startDate.toDateString() : "Any Week"}
+          {startDate ? startDate.toDateString() : isExpanded ? "Check-in" : "Check-in"}
+        </div>
+        <div className="search-bar-text">
+          {isExpanded ? "Check-out" : "Check-out"}
         </div>
         <div className="search-bar-text" onClick={handleGuestModalOpen}>
           {guests.adults + guests.children + guests.infants + guests.pets > 0
@@ -88,10 +107,11 @@ const SearchBar = ({ onSearch }) => {
         isOpen={isGuestModalOpen}
         onClose={handleGuestModalClose}
         onSelectGuest={handleSelectGuest}
-        guests={guests} 
+        guests={guests}
       />
     </div>
   );
 };
 
 export default SearchBar;
+
